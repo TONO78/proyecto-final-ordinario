@@ -34,6 +34,23 @@
                 <input type="number" id="cantidad" name="cantidad" class="form-control" value="{{ producto.cantidad }}" required>
             </div>
             
+            <div class="mb-3">
+                <label for="punto_reorden" class="form-label">Punto de Reorden:</label>
+                <input type="number" id="punto_reorden" name="punto_reorden" class="form-control" value="{{ producto['punto_reorden'] }}" required>
+            </div>
+            
+            <!-- Campo para seleccionar proveedor -->
+            <div class="mb-3">
+                <label for="proveedor" class="form-label">Proveedor:</label>
+                <select id="proveedor" name="proveedor_id" class="form-control" required>
+                    {% for proveedor in proveedores %}
+                        <option value="{{ proveedor.id }}" {% if proveedor.id == producto.proveedor_id %}selected{% endif %}>
+                            {{ proveedor.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         </form>
         
@@ -47,3 +64,4 @@
             crossorigin="anonymous"></script>
 </body>
 </html>
+
